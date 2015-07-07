@@ -1,0 +1,32 @@
+{
+  "name": "tile-stat-stream",
+  "version": "1.0.0",
+  "description": "a stream that gathers statistics from vector tile data",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint --no-eslintrc -c .eslintrc . && tape test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mapbox/tile-stat-stream.git"
+  },
+  "keywords": [
+    "tile",
+    "vector",
+    "tile",
+    "mapbox",
+    "statistics",
+    "stream",
+    "transform"
+  ],
+  "author": "Tom MacWright",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mapbox/tile-stat-stream/issues"
+  },
+  "homepage": "https://github.com/mapbox/tile-stat-stream#readme",
+  "devDependencies": {
+    "eslint": "^0.24.0",
+    "tape": "^4.0.0"
+  }
+}
