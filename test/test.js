@@ -19,19 +19,24 @@ test('TileStatStream', function(t) {
     t.end();
 });
 
-test('tilelive { transform: TileStatStream }', function(t) {
-    var src = path.join(__dirname, '/fixtures/valid-vectorgzip.mbtiles');
-    var dstStats = path.join(__dirname, '/fixtures/valid-vectorgzip.result.json');
-    var dst = path.join(tmp, crypto.randomBytes(12).toString('hex') + '.tilelivecopy.mbtiles');
-    var tileStatStream = new TileStatStream();
+function fixture(input) {
+    test('tilelive { transform: TileStatStream }: ' + input, function(t) {
+        var src = path.join(__dirname, '/fixtures/' + input);
+        var dstStats = path.join(__dirname, '/fixtures/' + input + '.json');
+        var dst = path.join(tmp, crypto.randomBytes(12).toString('hex') + '.mbtiles');
+        var tileStatStream = new TileStatStream();
 
-    tilelive.copy(src, dst, { transform: tileStatStream }, function(err) {
-        var stats = tileStatStream.getStatistics();
-        if (process.env.UPDATE) {
-            fs.writeFileSync(dstStats, JSON.stringify(stats, null, 2));
-        }
-        t.deepEqual(tileStatStream.getStatistics(), JSON.parse(fs.readFileSync((dstStats))));
-        t.error(err, 'success');
-        t.end();
+        tilelive.copy(src, dst, { transform: tileStatStream }, function(err) {
+            var stats = tileStatStream.getStatistics();
+            if (process.env.UPDATE) {
+                fs.writeFileSync(dstStats, JSON.stringify(stats, null, 2));
+            }
+            t.deepEqual(tileStatStream.getStatistics(), JSON.parse(fs.readFileSync((dstStats))));
+            t.error(err, 'success');
+            t.end();
+        });
     });
-});
+}
+
+fixture('valid-vectorgzip.mbtiles');
+fixture('valid.grids.mbtiles');
