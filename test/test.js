@@ -40,3 +40,4 @@ function fixture(input) {
 
 fixture('valid-vectorgzip.mbtiles');
 fixture('valid.grids.mbtiles');
+fixture('valid.mbtiles');
