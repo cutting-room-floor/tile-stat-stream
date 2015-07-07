@@ -4,7 +4,7 @@
   "description": "a stream that gathers statistics from vector tile data",
   "main": "index.js",
   "scripts": {
-    "test": "eslint --no-eslintrc -c .eslintrc . && tape test.js"
+    "test": "eslint --no-eslintrc -c .eslintrc . && tape ./test/test.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,11 @@
   "homepage": "https://github.com/mapbox/tile-stat-stream#readme",
   "devDependencies": {
     "eslint": "^0.24.0",
-    "tape": "^4.0.0"
+    "mbtiles": "^0.8.0",
+    "tape": "^4.0.0",
+    "tilelive": "^5.8.2"
+  },
+  "dependencies": {
+    "vector-tile": "^1.1.3"
   }
 }

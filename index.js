@@ -1,4 +1,4 @@
-var Writable = require('stream').Writable;
+var Transform = require('stream').Transform;
 var util = require('util');
 // var VectorLayer = require('./vector_layer');
 
@@ -8,13 +8,14 @@ var util = require('util');
  */
 function TileStatStream() {
     this.vectorLayers = {};
-    Writable.call(this, { objectMode: true });
+    Transform.call(this, { readableObjectMode: true, objectMode: true });
 }
 
-TileStatStream.prototype._write = function(tile, enc, callback) {
+util.inherits(TileStatStream, Transform);
+
+TileStatStream.prototype._transform = function(tile, enc, callback) {
     this.push(tile);
     callback();
 };
 
-util.inherits(TileStatStream, Writable);
-
+module.exports = TileStatStream;
