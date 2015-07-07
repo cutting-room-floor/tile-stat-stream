@@ -24,6 +24,11 @@
   "bugs": {
     "url": "https://github.com/mapbox/tile-stat-stream/issues"
   },
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
   "homepage": "https://github.com/mapbox/tile-stat-stream#readme",
   "devDependencies": {
     "eslint": "^0.24.0",
