@@ -1,3 +1,4 @@
+var Set = require('es6-set');
 var vectorTileGeometryTypes = require('vector-tile').VectorTileFeature.types;
 
 /**
