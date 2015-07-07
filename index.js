@@ -1,5 +1,10 @@
 var Transform = require('stream').Transform;
 var util = require('util');
+// var zlib = require('zlib');
+
+var VectorTile = require('vector-tile').VectorTile;
+var Protobuf = require('pbf');
+
 // var VectorLayer = require('./vector_layer');
 
 /**
@@ -13,9 +18,17 @@ function TileStatStream() {
 
 util.inherits(TileStatStream, Transform);
 
-TileStatStream.prototype._transform = function(tile, enc, callback) {
-    this.push(tile);
-    callback();
+TileStatStream.prototype._transform = function(data, enc, callback) {
+    // duck-type tile detection
+    if (data.x !== undefined &&
+        data.y !== undefined &&
+        data.z !== undefined &&
+        data.buffer !== undefined) {
+        var tile = new VectorTile(new Protobuf(data.buffer));
+        console.log(tile, data.buffer);
+    } else {
+        callback();
+    }
 };
 
 module.exports = TileStatStream;
