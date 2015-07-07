@@ -1,5 +1,6 @@
 var Transform = require('stream').Transform;
 var util = require('util');
+var tiletype = require('tiletype');
 var zlib = require('zlib');
 var Set = require('es6-set');
 var mapboxVectorTile = require('vector-tile');
@@ -23,7 +24,8 @@ TileStatStream.prototype._transform = function(data, enc, callback) {
     if (data.x !== undefined &&
         data.y !== undefined &&
         data.z !== undefined &&
-        data.buffer !== undefined) {
+        data.buffer !== undefined &&
+        tiletype.type(data.buffer) === 'pbf') {
         zlib.gunzip(data.buffer, function(err, inflatedBuffer) {
             if (err) return callback();
             var vectorTile = new VectorTile(new Protobuf(inflatedBuffer));
