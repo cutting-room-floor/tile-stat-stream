@@ -24,6 +24,19 @@ test('tilelive { transform: TileStatStream }', function(t) {
     var tileStatStream = new TileStatStream();
 
     tilelive.copy(src, dst, { transform: tileStatStream }, function(err) {
+        t.deepEqual(tileStatStream.getStatistics(), {
+            world_merc: {
+                min: null,
+                max: null,
+                count: 0,
+                geometryTypes: {
+                    Unknown: 0,
+                    LineString: 0,
+                    Polygon: 245,
+                    Point: 0
+                }
+            }
+        });
         t.error(err, 'success');
         t.end();
     });
