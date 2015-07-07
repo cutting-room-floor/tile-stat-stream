@@ -25,15 +25,10 @@ VectorLayerStats.prototype.analyzeProperty = function(name, value) {
         this.fields[name] = {
             min: null,
             max: null,
-            sum: 0,
             uniqueValues: new Set()
         };
     }
     var field = this.fields[name];
-
-    if (typeof value === 'number') {
-        field.sum += value;
-    }
 
     if (field.max === null || value > field.max) {
         field.max = value;
@@ -62,7 +57,6 @@ VectorLayerStats.prototype.getStatistics = function() {
         fields[field] = {
             min: this.fields[field].min,
             max: this.fields[field].max,
-            sum: this.fields[field].sum,
             values: setToArray(this.fields[field].uniqueValues)
         };
     }

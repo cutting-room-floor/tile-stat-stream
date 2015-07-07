@@ -1,5 +1,7 @@
 # Tile Statistics Stream
 
+[![build status](https://secure.travis-ci.org/mapbox/tile-stat-stream.svg)](http://travis-ci.org/mapbox/tile-stat-stream)
+
 A transform stream that gathers statistics from vector tile data.
 
 ## example

@@ -11,7 +11,6 @@
       "AREA": {
         "min": 0,
         "max": 1638094,
-        "sum": 12963239,
         "values": [
           44,
           238174,
@@ -118,7 +117,6 @@
       "FIPS": {
         "min": "",
         "max": "ZI",
-        "sum": 0,
         "values": [
           "AC",
           "AG",
@@ -225,7 +223,6 @@
       "ISO2": {
         "min": "AD",
         "max": "ZW",
-        "sum": 0,
         "values": [
           "AG",
           "DZ",
@@ -332,7 +329,6 @@
       "ISO3": {
         "min": "ABW",
         "max": "ZWE",
-        "sum": 0,
         "values": [
           "ATG",
           "DZA",
@@ -439,7 +435,6 @@
       "LAT": {
         "min": -54.422,
         "max": 78.83,
-        "sum": 4116.687999999997,
         "values": [
           17.078,
           28.163,
@@ -546,7 +541,6 @@
       "LON": {
         "min": -178.131,
         "max": 179.219,
-        "sum": 3249.132000000001,
         "values": [
           -61.783,
           2.632,
@@ -653,7 +647,6 @@
       "NAME": {
         "min": "Afghanistan",
         "max": "�land Islands",
-        "sum": 0,
         "values": [
           "Antigua and Barbuda",
           "Algeria",
@@ -760,7 +753,6 @@
       "POP2005": {
         "min": 0,
         "max": 1312978855,
-        "sum": 6171721574,
         "values": [
           83039,
           32854159,
@@ -867,7 +859,6 @@
       "REGION": {
         "min": 0,
         "max": 150,
-        "sum": 16096,
         "values": [
           19,
           2,
@@ -880,7 +871,6 @@
       "SUBREGION": {
         "min": 0,
         "max": 155,
-        "sum": 13491,
         "values": [
           29,
           15,
@@ -910,7 +900,6 @@
       "UN": {
         "min": 4,
         "max": 894,
-        "sum": 106224,
         "values": [
           28,
           12,
