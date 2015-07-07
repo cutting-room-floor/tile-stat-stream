@@ -1,6 +1,7 @@
 var test = require('tape'),
     path = require('path'),
     os = require('os'),
+    fs = require('fs'),
     crypto = require('crypto');
 
 var TileStatStream = require('../');
@@ -20,26 +21,16 @@ test('TileStatStream', function(t) {
 
 test('tilelive { transform: TileStatStream }', function(t) {
     var src = path.join(__dirname, '/fixtures/valid-vectorgzip.mbtiles');
+    var dstStats = path.join(__dirname, '/fixtures/valid-vectorgzip.result.json');
     var dst = path.join(tmp, crypto.randomBytes(12).toString('hex') + '.tilelivecopy.mbtiles');
     var tileStatStream = new TileStatStream();
 
     tilelive.copy(src, dst, { transform: tileStatStream }, function(err) {
-        console.log(JSON.stringify(tileStatStream.getStatistics(), null, 2));
-        /*
-        t.deepEqual(tileStatStream.getStatistics(), {
-            world_merc: {
-                min: null,
-                max: null,
-                count: 0,
-                geometryTypes: {
-                    Unknown: 0,
-                    LineString: 0,
-                    Polygon: 245,
-                    Point: 0
-                }
-            }
-        });
-        */
+        var stats = tileStatStream.getStatistics();
+        if (process.env.UPDATE) {
+            fs.writeFileSync(dstStats, JSON.stringify(stats, null, 2));
+        }
+        t.deepEqual(tileStatStream.getStatistics(), JSON.parse(fs.readFileSync((dstStats))));
         t.error(err, 'success');
         t.end();
     });
