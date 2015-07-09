@@ -19,6 +19,16 @@ test('TileStatStream', function(t) {
     t.end();
 });
 
+test('pushes through', function(t) {
+    var stream = new TileStatStream();
+    t.ok(stream, 'stream is constructed');
+    stream.on('data', function(d) {
+      t.equal(d, 42, 'got data');
+      t.end();
+    });
+    stream.write(42);
+});
+
 function fixture(input) {
     test('tilelive { transform: TileStatStream }: ' + input, function(t) {
         var src = path.join(__dirname, '/fixtures/' + input);

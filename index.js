@@ -27,6 +27,7 @@ TileStatStream.prototype._transform = function(data, enc, callback) {
         data.buffer !== undefined &&
         tiletype.type(data.buffer) === 'pbf') {
         zlib.gunzip(data.buffer, function(err, inflatedBuffer) {
+            this.push(data);
             if (err) return callback();
             var vectorTile = new VectorTile(new Protobuf(inflatedBuffer));
             for (var layerName in vectorTile.layers) {
@@ -41,6 +42,7 @@ TileStatStream.prototype._transform = function(data, enc, callback) {
             callback();
         }.bind(this));
     } else {
+        this.push(data);
         callback();
     }
 };
