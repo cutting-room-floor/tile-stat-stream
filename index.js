@@ -84,6 +84,10 @@ VectorLayerStats.prototype.analyzeProperty = function(name, value) {
     }
     var field = this.fields[name];
 
+    if (typeof value === 'string' && value.length > 256) {
+      return;
+    }
+
     if (field.max === null || value > field.max) {
         field.max = value;
     }
