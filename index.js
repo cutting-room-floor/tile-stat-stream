@@ -2,7 +2,7 @@ var Transform = require('stream').Transform;
 var util = require('util');
 var tiletype = require('tiletype');
 var zlib = require('zlib');
-var Set = require('es6-set');
+// var Set = require('es6-set');
 var mapboxVectorTile = require('vector-tile');
 var Protobuf = require('pbf');
 var VectorTile = mapboxVectorTile.VectorTile;
@@ -78,8 +78,8 @@ VectorLayerStats.prototype.analyzeProperty = function(name, value) {
     if (this.fields[name] === undefined) {
         this.fields[name] = {
             min: null,
-            max: null,
-            uniqueValues: new Set()
+            max: null // ,
+            // uniqueValues: new Set()
         };
     }
     var field = this.fields[name];
@@ -92,17 +92,21 @@ VectorLayerStats.prototype.analyzeProperty = function(name, value) {
         field.min = value;
     }
 
+    /*
     if (field.uniqueValues.size < this.UNIQUE_VALUES_MAX &&
         field.uniqueValues[value] === undefined) {
         field.uniqueValues.add(value);
     }
+    */
 };
 
+/*
 function setToArray(set) {
     var values = [];
     set.forEach(function(value) { values.push(value); });
     return values;
 }
+*/
 
 VectorLayerStats.prototype.getStatistics = function() {
     var fields = {};
@@ -110,8 +114,8 @@ VectorLayerStats.prototype.getStatistics = function() {
     for (var field in this.fields) {
         fields[field] = {
             min: this.fields[field].min,
-            max: this.fields[field].max,
-            values: setToArray(this.fields[field].uniqueValues)
+            max: this.fields[field].max // ,
+            // values: setToArray(this.fields[field].uniqueValues)
         };
     }
 
