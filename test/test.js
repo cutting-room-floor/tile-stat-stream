@@ -51,3 +51,20 @@ function fixture(input) {
 fixture('valid-vectorgzip.mbtiles');
 fixture('valid.grids.mbtiles');
 fixture('valid.mbtiles');
+
+test('tilelive { transform: TileStatStream }: configurable maxValues', function(t) {
+    var src = path.join(__dirname, '/fixtures/valid-vectorgzip.mbtiles');
+    var dstStats = path.join(__dirname, '/fixtures/valid-vectorgzip.mbtiles-maxValues.json');
+    var dst = path.join(tmp, crypto.randomBytes(12).toString('hex') + '.mbtiles');
+    var tileStatStream = new TileStatStream({ maxValues: 10 });
+
+    tilelive.copy(src, dst, { transform: tileStatStream }, function(err) {
+        var stats = tileStatStream.getStatistics();
+        if (process.env.UPDATE) {
+            fs.writeFileSync(dstStats, JSON.stringify(stats, null, 2));
+        }
+        t.deepEqual(tileStatStream.getStatistics(), JSON.parse(fs.readFileSync((dstStats))));
+        t.error(err, 'success');
+        t.end();
+    });
+});
