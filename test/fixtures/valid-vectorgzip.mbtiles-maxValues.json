@@ -1,0 +1,185 @@
+{
+  "world_merc": {
+    "geometryTypes": {
+      "Unknown": 0,
+      "Point": 0,
+      "LineString": 0,
+      "Polygon": 245
+    },
+    "count": 245,
+    "fields": {
+      "AREA": {
+        "min": 0,
+        "max": 1638094,
+        "values": [
+          44,
+          238174,
+          8260,
+          2740,
+          2820,
+          124670,
+          20,
+          273669,
+          768230,
+          71
+        ]
+      },
+      "FIPS": {
+        "min": "",
+        "max": "ZI",
+        "values": [
+          "AC",
+          "AG",
+          "AJ",
+          "AL",
+          "AM",
+          "AO",
+          "AQ",
+          "AR",
+          "AS",
+          "BA"
+        ]
+      },
+      "ISO2": {
+        "min": "AD",
+        "max": "ZW",
+        "values": [
+          "AG",
+          "DZ",
+          "AZ",
+          "AL",
+          "AM",
+          "AO",
+          "AS",
+          "AR",
+          "AU",
+          "BH"
+        ]
+      },
+      "ISO3": {
+        "min": "ABW",
+        "max": "ZWE",
+        "values": [
+          "ATG",
+          "DZA",
+          "AZE",
+          "ALB",
+          "ARM",
+          "AGO",
+          "ASM",
+          "ARG",
+          "AUS",
+          "BHR"
+        ]
+      },
+      "LAT": {
+        "min": -54.422,
+        "max": 78.83,
+        "values": [
+          17.078,
+          28.163,
+          40.43,
+          41.143,
+          40.534,
+          -12.296,
+          -14.318,
+          -35.377,
+          -24.973,
+          26.019
+        ]
+      },
+      "LON": {
+        "min": -178.131,
+        "max": 179.219,
+        "values": [
+          -61.783,
+          2.632,
+          47.395,
+          20.068,
+          44.563,
+          17.544,
+          -170.73,
+          -65.167,
+          136.189,
+          50.562
+        ]
+      },
+      "NAME": {
+        "min": "Afghanistan",
+        "max": "�land Islands",
+        "values": [
+          "Antigua and Barbuda",
+          "Algeria",
+          "Azerbaijan",
+          "Albania",
+          "Armenia",
+          "Angola",
+          "American Samoa",
+          "Argentina",
+          "Australia",
+          "Bahrain"
+        ]
+      },
+      "POP2005": {
+        "min": 0,
+        "max": 1312978855,
+        "values": [
+          83039,
+          32854159,
+          8352021,
+          3153731,
+          3017661,
+          16095214,
+          64051,
+          38747148,
+          20310208,
+          724788
+        ]
+      },
+      "REGION": {
+        "min": 0,
+        "max": 150,
+        "values": [
+          19,
+          2,
+          142,
+          150,
+          9,
+          0
+        ]
+      },
+      "SUBREGION": {
+        "min": 0,
+        "max": 155,
+        "values": [
+          29,
+          15,
+          145,
+          39,
+          17,
+          61,
+          5,
+          53,
+          21,
+          34
+        ]
+      },
+      "UN": {
+        "min": 4,
+        "max": 894,
+        "values": [
+          28,
+          12,
+          31,
+          8,
+          51,
+          24,
+          16,
+          32,
+          36,
+          48
+        ]
+      }
+    }
+  }
+}

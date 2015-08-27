@@ -12,7 +12,8 @@ var vectorTileGeometryTypes = mapboxVectorTile.VectorTileFeature.types;
  * TileStatStream is the exported functionality of this module: it is a
  * writable stream that collects statistics from vector tiles.
  */
-function TileStatStream() {
+function TileStatStream(options) {
+    this.options = options;
     this.vectorLayers = {};
     Transform.call(this, { readableObjectMode: true, objectMode: true });
 }
@@ -32,7 +33,7 @@ TileStatStream.prototype._transform = function(data, enc, callback) {
             var vectorTile = new VectorTile(new Protobuf(inflatedBuffer));
             for (var layerName in vectorTile.layers) {
                 if (this.vectorLayers[layerName] === undefined) {
-                    this.vectorLayers[layerName] = new VectorLayerStats();
+                    this.vectorLayers[layerName] = new VectorLayerStats(this.options);
                 }
                 var layer = vectorTile.layers[layerName];
                 for (var i = 0; i < layer.length; i++) {
@@ -59,8 +60,9 @@ TileStatStream.prototype.getStatistics = function() {
  * VectorLayer collects statistics from a single vector_layer within
  * a vector tile.
  */
-function VectorLayerStats() {
-    this.UNIQUE_VALUES_MAX = 100;
+function VectorLayerStats(options) {
+    options = options || {};
+    this.UNIQUE_VALUES_MAX = options.maxValues || 100;
     this.count = 0;
     this.fields = {};
     this.geometryTypeCounts = [0, 0, 0, 0];
